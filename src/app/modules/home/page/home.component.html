@@ -1,15 +1,14 @@
 <div id="content">
   <div>
-    <button style="float: right" class="btn btn-primary" (click)="openMyModal()">
-      Open Modal
-    </button>
-
-    <h1>Projects</h1>
+    <h4>Stock Price Quotes List</h4>
   </div>
-
-  <ngx-masonry [useImagesLoaded]="true" [options]="{ transitionDuration: '0.8s' }">
-    <ngxMasonryItem class="masonry-item" *ngFor="let project of projects$ | async">
-      <app-project-item [project]="project"></app-project-item>
-    </ngxMasonryItem>
-  </ngx-masonry>
+  <mat-card style="margin-bottom: 1%;" *ngFor="let data of securities">
+    <mat-card-header>
+      <mat-card-title>{{data?.SECURITY_NAME }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions>
+      <button class="active" mat-button (click)='navigateChart(data)'>Chart View</button>
+      <button class="active" mat-button>{{data?.MKT}}</button>
+    </mat-card-actions>
+  </mat-card>
 </div>

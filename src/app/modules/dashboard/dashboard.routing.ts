@@ -15,7 +15,10 @@ export const routes: Routes = [
   },
   {
     path: 'candlestick',
-    component: CandlestickComponent
+    component: CandlestickComponent,
+    data: {
+      key: {},
+    }
   },
   {
     path: 'interactive',
@@ -43,4 +46,4 @@ export const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DashboardRoutingModule {}
+export class DashboardRoutingModule { }

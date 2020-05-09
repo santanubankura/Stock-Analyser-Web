@@ -9,22 +9,28 @@ import {
 } from '@syncfusion/ej2-angular-charts';
 import { DashboardService } from '@app/service/dashboard.service';
 import { chartData } from '@data/schema/indicator-data';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-candlestick',
   templateUrl: './candlestick.component.html',
   styleUrls: ['./candlestick.component.scss']
 })
+
 export class CandlestickComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
-  public title: string = 'STATE BANK OF INDIA';
+  public title: string = '';
   public titleStyle: object = { color: 'black' };
   public tooltip: object = { enable: true };
   public data1: Object[] = chartData;
+  routeData: any;
 
-  constructor(private dashboardService: DashboardService) {
+  constructor(private dashboardService: DashboardService, private route: Router, private dataRoute: ActivatedRoute) {
+    this.routeData = JSON.parse(this.dataRoute.snapshot.params['key']);
+    this.title = this.routeData.SECURITY_NAME;
+    console.log(this.routeData, "{000000}");
     this.dashboardService
-      .GetSecurityStatus()
+      .GetSecurityStatus(this.routeData.Id)
       .pipe(takeUntil(this.destroy$))
       .subscribe((data: any[]) => {
         const dataObj = data.map(d => ({
@@ -36,15 +42,10 @@ export class CandlestickComponent implements OnInit, OnDestroy {
           x: new Date(d.x)
         }));
         this.data1 = dataObj;
-        console.log(this.data1, '{++++}');
       });
   }
 
   ngOnInit() {
-    this.dashboardService
-      .GetSecurities()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((data: any[]) => {});
   }
 
   public primaryXAxis: Object = {

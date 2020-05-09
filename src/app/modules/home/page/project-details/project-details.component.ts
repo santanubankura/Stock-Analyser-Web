@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
 import { Project } from '@data/schema/project';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -17,5 +16,6 @@ export class ProjectDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.project$ = this.route.data.pipe(map(data => data.project));
+    console.log(this.project$, "{1111}");
   }
 }
