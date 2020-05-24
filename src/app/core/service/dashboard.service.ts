@@ -11,9 +11,9 @@ import { retry, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DashboardService {
-  private REST_API_SERVER = 'http://3.17.189.52/Api/';
+  private REST_API_SERVER = 'http://52.15.94.191:216/Api/';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
@@ -36,7 +36,7 @@ export class DashboardService {
     return this.httpClient
       .get(
         this.REST_API_SERVER +
-        `Securities/GetSecurityStatus/${Id}/01-Mar-2020/08-May-2020`
+          `Securities/GetSecurityStatus/${Id}/01-Mar-2020/08-May-2020`
       )
       .pipe(catchError(this.handleError));
   }
