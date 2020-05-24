@@ -2,13 +2,15 @@
   <div>
     <h4>Stock Price Quotes List</h4>
   </div>
+  <div style="margin:auto; width: 70%; margin-top: 30px;">
+    <app-search-bar (onSelectedOption)="onSelectedOption($event)"></app-search-bar>
+  </div>
+ 
   <mat-card style="margin-bottom: 1%;" *ngFor="let data of securities">
-    <mat-card-header>
+    <mat-card-header (click)='navigateChart(data)'>
+      <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{data?.SECURITY_NAME }}</mat-card-title>
+      <mat-card-subtitle>{{data?.MKT }}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-actions>
-      <button class="active" mat-button (click)='navigateChart(data)'>Chart View</button>
-      <button class="active" mat-button>{{data?.MKT}}</button>
-    </mat-card-actions>
   </mat-card>
 </div>

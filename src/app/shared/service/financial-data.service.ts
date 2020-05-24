@@ -10175,7 +10175,7 @@ export class FinancialDataService {
         volume: 6424693
       }
     ];
-    result.title = 'Amazon (AMZN)';
+    result.title = 'HDFC Bank Ltd (HDFC)';
     return result;
   }
   public getGoog(): any {
@@ -20253,7 +20253,7 @@ export class FinancialDataService {
         volume: 1538688
       }
     ];
-    result.title = 'Google (GOOG)';
+    result.title = 'State Bank of India (SBI)';
     return result;
   }
   public getMsft(): any {
@@ -20276,10 +20276,10 @@ export class FinancialDataService {
       },
       {
         time: new Date(2013, 1, 5),
-        open: 27.62,
-        high: 27.66,
-        low: 27.36,
-        close: 27.5,
+        open: 401.72,
+        high: 402.47,
+        low: 395.25,
+        close: 397.14,
         volume: 35410361
       },
       {
@@ -30331,7 +30331,7 @@ export class FinancialDataService {
         volume: 48756338
       }
     ];
-    result.title = 'Microsoft (MSFT)';
+    result.title = 'ICICI Bank Limited (ICICI)';
     return result;
   }
   public getTsla(): any {
@@ -40409,10 +40409,9 @@ export class FinancialDataService {
         volume: 6214069
       }
     ];
-    result.title = 'TESLA';
-    // setting data intent for Series Title
+    result.title = 'IDFC Bank Limited (IDFC)';
     result.__dataIntents = {
-      open: ['SeriesTitle/TESLA']
+      open: ['SeriesTitle/IDFC']
     };
     return result;
   }

@@ -12,7 +12,12 @@ export class FinancialChartComponent {
   public calloutsData: any[];
 
   constructor(private dataService: FinancialDataService) {
-    this.stocksData = [this.dataService.getTsla(), this.dataService.getGoog()];
+    this.stocksData = [
+      this.dataService.getTsla(),
+      this.dataService.getGoog(),
+      this.dataService.getMsft(),
+      this.dataService.getAmzn()
+    ];
     this.calloutsData = this.getCallouts(this.stocksData);
   }
 
@@ -23,7 +28,6 @@ export class FinancialChartComponent {
       const intervalDiv = Math.floor(Math.random() * (400 - 360)) + 360;
       const calloutMin = new CalloutDataItem({ label: 'MIN' });
       const calloutMax = new CalloutDataItem({ label: 'MAX' });
-      // initalizing values for min/max callouts
       calloutMin.value = Number.MAX_VALUE;
       calloutMax.value = Number.MIN_VALUE;
       let idx: number = 0;

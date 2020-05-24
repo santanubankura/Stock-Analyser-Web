@@ -11,6 +11,8 @@ import { retry, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DashboardService {
+  searchOption = [];
+  public postsData: any;
   private REST_API_SERVER = 'http://52.15.94.191:216/Api/';
 
   constructor(private httpClient: HttpClient) {}
@@ -49,5 +51,19 @@ export class DashboardService {
       retry(3),
       catchError(this.handleError)
     );
+  }
+
+  public filteredListOptions() {
+    let posts = this.postsData;
+    let filteredPostsList = [];
+    for (let post of posts) {
+      for (let options of this.searchOption) {
+        if (options.SECURITY_NAME === post.SECURITY_NAME) {
+          filteredPostsList.push(post);
+        }
+      }
+    }
+    console.log(filteredPostsList);
+    return filteredPostsList;
   }
 }
