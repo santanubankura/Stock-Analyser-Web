@@ -11,9 +11,11 @@ import { retry, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DashboardService {
-  private REST_API_SERVER = 'http://3.17.189.52/Api/';
+  searchOption = [];
+  public postsData: any;
+  private REST_API_SERVER = 'http://52.15.94.191:216/Api/';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
@@ -36,7 +38,7 @@ export class DashboardService {
     return this.httpClient
       .get(
         this.REST_API_SERVER +
-        `Securities/GetSecurityStatus/${Id}/01-Mar-2020/08-May-2020`
+          `Securities/GetSecurityStatus/${Id}/01-Mar-2020/08-May-2020`
       )
       .pipe(catchError(this.handleError));
   }
@@ -49,5 +51,19 @@ export class DashboardService {
       retry(3),
       catchError(this.handleError)
     );
+  }
+
+  public filteredListOptions() {
+    let posts = this.postsData;
+    let filteredPostsList = [];
+    for (let post of posts) {
+      for (let options of this.searchOption) {
+        if (options.SECURITY_NAME === post.SECURITY_NAME) {
+          filteredPostsList.push(post);
+        }
+      }
+    }
+    console.log(filteredPostsList);
+    return filteredPostsList;
   }
 }

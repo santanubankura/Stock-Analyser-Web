@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CandlestickComponent } from './page/candlestick/candlestick.component';
+import { FinancialChartComponent } from './page/financial-chart/financial-chart.component';
 import { InteractiveComponent } from './page/interactive/interactive.component';
 import { MultipleSeriesComponent } from './page/multiple-series/multiple-series.component';
 import { RangeSelectorComponent } from './page/range-selector/range-selector.component';
@@ -17,8 +18,12 @@ export const routes: Routes = [
     path: 'candlestick',
     component: CandlestickComponent,
     data: {
-      key: {},
+      key: {}
     }
+  },
+  {
+    path: 'financial-chart',
+    component: FinancialChartComponent
   },
   {
     path: 'interactive',
@@ -46,4 +51,4 @@ export const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}

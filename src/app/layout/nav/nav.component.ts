@@ -16,6 +16,7 @@ export class NavComponent implements OnInit {
 
   navItems = [
     { link: '/dashboard/home', title: 'Stocks' },
+    { link: '/chartboard/financial-chart', title: 'Financial Chart' },
     { link: '/about', title: 'Feedback' },
     { link: '/contact', title: 'Subscription' }
   ];
