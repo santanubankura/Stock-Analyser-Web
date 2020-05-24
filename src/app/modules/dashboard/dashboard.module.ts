@@ -14,6 +14,9 @@ import {
   RangeNavigatorAllModule,
   ChartAllModule
 } from '@syncfusion/ej2-angular-charts';
+import { IgxFinancialChartModule } from 'igniteui-angular-charts';
+import { FinancialChartComponent } from './page/financial-chart/financial-chart.component';
+import { FinancialDataService } from '../../shared/service/financial-data.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import {
     MultipleSeriesComponent,
     RangeSelectorComponent,
     TrendlinesComponent,
-    StockEventsComponent
+    StockEventsComponent,
+    FinancialChartComponent
   ],
   imports: [
     CommonModule,
@@ -30,10 +34,11 @@ import {
     SharedModule,
     StockChartAllModule,
     ChartAllModule,
-    RangeNavigatorAllModule
+    RangeNavigatorAllModule,
+    IgxFinancialChartModule
   ],
   exports: [],
-  providers: [],
+  providers: [FinancialDataService],
   entryComponents: []
 })
 export class DashboardModule {}
